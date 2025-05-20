@@ -1,0 +1,12 @@
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun";
+    show-icons:                 true;
+    icon-theme: "Mkos-Big-Sur-Night";
+	drun-display-format:        "{name}";
+    font: "Fira Code 12";
+
+}
+
+
+@theme "~/.config/rofi/gruvbox.rasi"
