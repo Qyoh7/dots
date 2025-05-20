@@ -1,14 +1,14 @@
 c = c
 config = config
 
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.webpage.darkmode.policy.images = 'never'
 exceptions = [
         "www.desmos.com",
         "file://*",
         "docs.google.com"
         ]
 c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
-c.colors.webpage.darkmode.policy.images = 'never'
 for e in exceptions:
     config.set('colors.webpage.darkmode.enabled', False, e)
 
