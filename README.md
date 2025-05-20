@@ -1,3 +1,4 @@
 # dotfiles
-dots for my laptop
+dots for my laptop, 
+
 many things yoinked from many places
