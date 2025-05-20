@@ -6,7 +6,8 @@ c.colors.webpage.darkmode.policy.images = 'never'
 exceptions = [
         "www.desmos.com",
         "file://*",
-        "docs.google.com"
+        "docs.google.com",
+        "youtube.com"
         ]
 c.colors.webpage.darkmode.enabled = True
 for e in exceptions:
