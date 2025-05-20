@@ -1,4 +1,7 @@
 #sudo pacman -S waybar nvim qutebrowser rofi --noconfirm
+rm -rf $HOME/.config/hypr/
+cp -r $HOME/personal/dots/hyprtop/ $HOME/.config/hypr/
+
 rm -rf $HOME/.config/waybar/
 cp -r $HOME/personal/dots/waybar/ $HOME/.config/waybar/
 

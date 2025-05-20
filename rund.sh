@@ -1,3 +1,6 @@
+rm -rf $HOME/.config/hypr/
+cp -r $HOME/personal/dots/hyprdesk/ $HOME/.config/hypr/
+
 rm -rf $HOME/.config/waybar/
 cp -r $HOME/personal/dots/waybar/ $HOME/.config/waybar/
 
