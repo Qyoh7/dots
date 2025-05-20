@@ -15,22 +15,44 @@ settings:
       wqa: quit --save
   auto_save.session:
     global: true
+  colors.hints.bg:
+    global: rgba(250, 191, 47, 200)
   colors.messages.warning.bg:
     global: darkorange
+  colors.tabs.bar.bg:
+    global: '#282828'
+  colors.webpage.darkmode.enabled:
+    global: false
   content.cookies.accept:
     global: no-3rdparty
+  content.javascript.clipboard:
+    https://chatgpt.com: access-paste
   content.javascript.log_message.excludes:
     global:
       userscript:_qute_stylesheet:
       - '*Refused to apply inline style because it violates the following Content
         Security Policy directive: *'
+  content.notifications.enabled:
+    https://www.youtube.com: false
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: true
   fonts.completion.category:
     global: bold default_size default_family
+  fonts.default_family:
+    global: SF Pro Text
   fonts.default_size:
     global: 12pt
   tabs.favicons.scale:
-    global: 0.5
+    global: 1.0
+  tabs.padding:
+    global:
+      bottom: 3
+      left: 5
+      right: 5
+      top: 3
   tabs.position:
     global: left
   tabs.width:
-    global: 10%
+    global: 15%
+  window.transparent:
+    global: false
