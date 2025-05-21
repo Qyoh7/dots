@@ -13,8 +13,6 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use ('nvim-tree/nvim-tree.lua')
-
     use {
         'morhetz/gruvbox',
         config = function() vim.cmd.colorscheme("gruvbox") end 
