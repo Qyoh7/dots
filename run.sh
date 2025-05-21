@@ -12,7 +12,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 rm $HOME/.zshrc $HOME/.tmux.conf
-cp $HOME/personal/rcs/.zshrc $HOME/personal/rcs/.tmux.conf $HOME
+cp $HOME/personal/dots/rcs/.zshrc $HOME
+cp $HOME/personal/dots/rcs/.tmux.conf $HOME
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
