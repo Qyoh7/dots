@@ -11,6 +11,11 @@ cp -r $HOME/personal/dots/nvim $HOME/.config/nvim/
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+rm $HOME/.zshrc $HOME/.tmux.conf
+cp $HOME/personal/rcs/.zshrc $HOME/personal/rcs/.tmux.conf $HOME
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 rm -rf $HOME/.config/qutebrowser/
 cp -r $HOME/personal/dots/qutebrowser $HOME/.config/qutebrowser/
 
