@@ -54,6 +54,7 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({select = true, behavior = cmp.ConfirmBehavior.Insert}),
         --Ctrl + space triggers completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
+        ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     }),
     snippet = {
         expand = function(args)
