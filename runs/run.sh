@@ -25,5 +25,7 @@ cp -r $HOME/personal/dots/rofi $HOME/.config/rofi/
 
 rm -rf $HOME/.config/spicetify/
 cp -r $HOME/personal/dots/spicetify $HOME/.config/spicetify/
+pkill hyprpaper
 hyprctl reload
 hyprshade toggle blue-light-filter
+run hyprpaper
