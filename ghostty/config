@@ -1,5 +1,6 @@
 theme = GruvboxDark
 font-family = FiraCode Nerd Font
+adjust-cursor-thickness = 2
 # This is the configuration file for Ghostty.
 #
 # This template file has been automatically created at the following
