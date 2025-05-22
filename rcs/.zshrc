@@ -118,20 +118,12 @@ alias bt='bluetuith'
 alias blf='hyprshade toggle blue-light-filter'
 alias gs='git status'
 
-# Created by `pipx` on 2024-12-29 23:06:27
 export PATH="$PATH:/home/zayden/.local/bin"
-
-export PATH=$PATH:/home/zayden/.spicetify
-export PATH=$PATH:/home/zayden/cloned/eww/target/release/
-export PATH=$PATH:/var/lib/snapd/snap/bin
-export PATH=$PATH:/home/zayden/.cargo/bin
-export PATH=$PATH:/home/zayden/.local/scripts
-#export PATH=$JAVA_HOME/bin:$PATH
-#export JAVA_HOME=/home/javauser/jdk/jdk-22
+export PATH="$PATH:/home/zayden/.spicetify"
+export PATH="$PATH:/home/zayden/cloned/eww/target/release/"
+export PATH="$PATH:/var/lib/snapd/snap/bin"
+export PATH="$PATH:/home/zayden/.cargo/bin"
+export PATH="$PATH:/home/zayden/.local/scripts"
 
 bindkey -s ^f "tmux-sessionizer\n"
-
 source <(fzf --zsh)
-
-fastfetch
-#source <(COMPLETE=zsh tms)
