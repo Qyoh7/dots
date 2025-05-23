@@ -1,0 +1,14 @@
+[[remap]]
+device_name = "TPPS/2 Elan TrackPoint"
+input = ["BTN_LEFT"]
+output = ["KEY_LEFTCTRL"]
+
+[[remap]]
+device_name = "TPPS/2 Elan TrackPoint"
+input = ["BTN_MIDDLE"]
+output = ["KEY_LEFTMETA"]
+
+[[remap]]
+device_name = "TPPS/2 Elan TrackPoint"
+input = ["BTN_RIGHT"]
+output = ["KEY_RIGHTALT"]
