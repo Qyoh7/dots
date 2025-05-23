@@ -3,8 +3,9 @@ configuration {
 	modi:                       "drun";
     show-icons:                 true;
     icon-theme: "Mkos-Big-Sur-Night";
+    element-icon { size: 2.5em; }
 	drun-display-format:        "{name}";
-    font: "Fira Code 12";
+    font: "Fira Sans 12";
 
 }
 
