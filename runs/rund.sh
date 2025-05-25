@@ -7,24 +7,27 @@ fi
 
 configs=("waybar" "nvim" "ghostty" "qutebrowser" "rofi" "spicetify")
 
-for cfg in "${configs[@]}"; do
-    echo "Copying over $cfg config"
-    rm -rf "$HOME/.config/$cfg/"
-    cp -r "$DEV_ENV/$cfg" "$HOME/.config/$cfg"
-done
 
 if [ "$1" = "--desktop" ]; then
     echo "Copying over hyprland desktop config"
     rm -rf "$HOME/.config/hypr/"
     cp -r "$DEV_ENV/hyprdesk/" "$HOME/.config/hypr/"
     cp "$DEV_ENV/scripts/tmux-sessionizer-desktop" "$HOME/.local/scripts/tmux-sessionizer"
-else
-
+elif [ "$1" = "--laptop" ]; then
     echo "Copying over hyprland laptop config"
     rm -rf "$HOME/.config/hypr/"
     cp -r "$DEV_ENV/hyprtop/" "$HOME/.config/hypr/"
     cp "$DEV_ENV/scripts/tmux-sessionizer" "$HOME/.local/scripts"
+else
+    echo "Provide an arg (--desktop or --laptop)"
+    exit 1
 fi
+
+for cfg in "${configs[@]}"; do
+    echo "Copying over $cfg config"
+    rm -rf "$HOME/.config/$cfg/"
+    cp -r "$DEV_ENV/$cfg" "$HOME/.config/$cfg"
+done
 
 if [ ! -d "$HOME/.local/scripts" ]; then
     mkdir -p "$HOME/.local/scripts"
