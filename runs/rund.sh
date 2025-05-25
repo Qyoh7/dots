@@ -48,3 +48,4 @@ cp "$DEV_ENV/rcs/.tmux.conf" "$HOME"
 
 hyprctl reload
 hyprshade toggle blue-light-filter
+hyprpaper > /dev/null 2>&1 &
