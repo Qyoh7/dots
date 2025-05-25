@@ -4,7 +4,7 @@ configuration {
     show-icons:                 true;
     icon-theme: "Mkos-Big-Sur-Night";
 	drun-display-format:        "{name}";
-    font: "Fira Code 12";
+    font: "Fira Sans 12";
 
 }
 
