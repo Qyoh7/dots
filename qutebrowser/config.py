@@ -4,7 +4,7 @@ config = config
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.images = 'never'
 c.colors.webpage.darkmode.enabled = True
-config.set('colors.webpage.prefers_color_scheme_dark', True)
+config.set('colors.webpage.preferred_color_scheme', 'dark')
 
 
 exceptions = [
