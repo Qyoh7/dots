@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 echo "DEV_ENV: $DEV_ENV"
 
 if [ -z "$DEV_ENV" ]; then
