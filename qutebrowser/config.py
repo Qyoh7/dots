@@ -6,6 +6,8 @@ c.colors.webpage.darkmode.policy.images = 'never'
 c.colors.webpage.darkmode.enabled = True
 config.set('colors.webpage.preferred_color_scheme', 'dark')
 
+c.content.blocking.enabled = True
+
 
 exceptions = [
         "www.desmos.com",
