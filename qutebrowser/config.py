@@ -18,7 +18,6 @@ exceptions = [
 for e in exceptions:
     config.set('colors.webpage.darkmode.enabled', False, e)
 
-
 config.bind(',d', 'config-cycle colors.webpage.darkmode.enabled true false')
 
 c.tabs.position = "left"
