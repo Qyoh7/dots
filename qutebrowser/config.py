@@ -8,7 +8,6 @@ config.set('colors.webpage.preferred_color_scheme', 'dark')
 
 c.content.blocking.enabled = True
 
-
 exceptions = [
         "www.desmos.com",
         "file://*",
