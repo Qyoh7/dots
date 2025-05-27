@@ -20,7 +20,7 @@ lspconfig.jdtls.setup({
     '-Xmx1G',
     '-jar', launcher_jar,
     '-configuration', home .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
-    '-data', vim.fn.getcwd() .. '/.workspace'
+    '-data', home .. '/.local/share/nvim/jdtls-workspaces/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
   },
 
   root_dir = require('lspconfig.util').root_pattern('.git', 'mvnw', 'gradlew', 'build.gradle'),
