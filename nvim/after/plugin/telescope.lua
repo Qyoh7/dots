@@ -10,3 +10,4 @@ vim.keymap.set('n', '<leader>df', function()
     hidden = true,
     no_ignore = true,  -- include files ignored by .gitignore, optional
   })
+end)
