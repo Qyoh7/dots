@@ -23,6 +23,9 @@ return require('packer').startup(function(use)
     use ('mbbill/undotree')
     use ('tpope/vim-fugitive')
 
+    use ('subnut/nvim-ghost.nvim')
+    
+
     use ('neovim/nvim-lspconfig')
     use ("williamboman/mason.nvim")
     use ('williamboman/mason-lspconfig.nvim')
