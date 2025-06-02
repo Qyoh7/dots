@@ -1,0 +1,11 @@
+#!/bin/bash
+# Increase/decrease brightness by given amount
+
+DELTA=$1  # e.g., +10 or -10
+
+for BUS in 3 4; do
+  CUR=$(ddcutil --bus=$BUS getvcp 10 | grep -Po '(?<=current value = )\d+')
+  NEW=$(($CUR + $DELTA))
+  NEW=$(($NEW < 0 ? 0 : ($NEW > 100 ? 100 : $NEW)))
+  ddcutil --bus=$BUS setvcp 10 $NEW
+done
