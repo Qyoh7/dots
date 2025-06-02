@@ -14,6 +14,7 @@ if [ "$1" = "--desktop" ]; then
     rm -rf "$HOME/.config/hypr/"
     cp -r "$DEV_ENV/hyprdesk/" "$HOME/.config/hypr/"
     cp "$DEV_ENV/scripts/tmux-sessionizer-desktop" "$HOME/.local/scripts/tmux-sessionizer"
+    cp "$DEV_ENV/scripts/change-brightness" "$HOME/.local/scripts/" 
 elif [ "$1" = "--laptop" ]; then
     echo "Copying over hyprland laptop config"
     rm -rf "$HOME/.config/hypr/"
