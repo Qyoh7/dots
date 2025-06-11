@@ -117,6 +117,7 @@ alias wifi='nmtui'
 alias bt='bluetuith'
 alias blf='hyprshade toggle blue-light-filter'
 alias gs='git status'
+alias weather='curl wttr.in'
 
 export PATH="$PATH:/home/zayden/.local/bin"
 export PATH="$PATH:/home/zayden/.spicetify"
