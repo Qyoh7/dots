@@ -129,3 +129,6 @@ export PATH_TO_FX="/home/zayden/java/javafx-sdk-24.0.1/lib"
 
 bindkey -s ^f "tmux-sessionizer\n"
 source <(fzf --zsh)
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
