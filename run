@@ -21,8 +21,13 @@ elif [ "$1" = "--laptop" ]; then
     cp -r "$DEV_ENV/hyprtop/" "$HOME/.config/hypr/"
     cp "$DEV_ENV/scripts/tmux-sessionizer" "$HOME/.local/scripts"
 else
-    echo "Provide an arg (--desktop or --laptop)"
+    echo "Provide an arg1 (--desktop or --laptop)"
     exit 1
+fi
+
+if [ "$2" = "--install" ]; then
+    echo "installing packages"
+    ./runs/pkg
 fi
 
 for cfg in "${configs[@]}"; do
