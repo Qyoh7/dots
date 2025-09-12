@@ -40,4 +40,16 @@ return require('packer').startup(function(use)
             require("nvim-autopairs").setup {}
         end
     }
+    use {
+        "ahmedkhalf/project.nvim",
+        config = function()
+            require("project_nvim").setup {
+                detection_methods = { "lsp", "pattern" }, -- Detect root via LSP or patterns
+                patterns = { ".git", "pom.xml", "build.gradle", "mvnw", "gradlew" },
+            }
+
+            -- If using Telescope integration
+            require('telescope').load_extension('projects')
+        end
+    }
 end)
