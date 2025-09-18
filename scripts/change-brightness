@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Usage: change-brightness.sh +10 or -15
+
+DELTA=$1
+
+if [[ ! "$DELTA" =~ ^[+-][0-9]+$ ]]; then
+  echo "Usage: $0 [+/-number]"
+  exit 1
+fi
+
+for BUS in 3 4; do  # Replace with actual working I2C bus numbers
+  CUR=$(ddcutil --bus=$BUS getvcp 10 2>/dev/null | grep -Po '(?<=current value = )\d+')
+
+  if [[ -z "$CUR" ]]; then
+    echo "❌ Failed to get brightness for bus $BUS"
+    continue
+  fi
+
+  # Convert DELTA to integer using Bash
+  DELTA_INT=${DELTA}
+
+  NEW=$((CUR + DELTA_INT))
+
+  # Clamp to [0, 100]
+  if (( NEW < 0 )); then NEW=0; fi
+  if (( NEW > 100 )); then NEW=100; fi
+
+  echo "✅ Bus $BUS: $CUR → $NEW"
+  ddcutil --bus=$BUS setvcp 10 $NEW
+done

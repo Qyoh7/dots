@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+yay -S --needed --noconfirm - < $DEV_ENV/runs/pkglist.txt
