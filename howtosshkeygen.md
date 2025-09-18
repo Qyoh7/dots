@@ -1,5 +1,5 @@
 generate the key
-```ssh-keygen -t ed25519 -C "USERNAME@gmail.com"```
+ssh-keygen -t ed25519 -C "USERNAME@gmail.com"
 
 check if shits running
 ```eval "$(ssh-agent -s)"```

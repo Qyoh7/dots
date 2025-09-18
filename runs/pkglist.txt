@@ -10,10 +10,6 @@ bluez-utils
 brightnessctl
 cliphist
 clipqr
-<<<<<<< HEAD
-code
-=======
->>>>>>> master
 decibels
 discord
 dolphin
@@ -260,10 +256,7 @@ umockdev
 vim
 vulkan-intel
 vulkan-tools
-<<<<<<< HEAD
-=======
 visual-studio-code-bin
->>>>>>> master
 wallust
 waybar-cava
 wev
