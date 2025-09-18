@@ -1,4 +1,4 @@
-theme = GruvboxDark
+theme = Gruvbox Dark
 font-family = FiraCode Nerd Font
 adjust-cursor-thickness = 2
 confirm-close-surface = false
