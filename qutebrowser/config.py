@@ -4,6 +4,9 @@ config = config
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.images = 'never'
 c.colors.webpage.darkmode.enabled = True
+c.input.insert_mode.auto_load = True
+c.input.insert_mode.leave_on_load = False
+c.input.insert_mode.auto_enter = True
 config.set('colors.webpage.preferred_color_scheme', 'dark')
 
 c.content.blocking.enabled = True
