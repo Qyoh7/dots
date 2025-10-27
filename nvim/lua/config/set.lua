@@ -31,3 +31,5 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 vim.opt.clipboard = 'unnamedplus'
+
+vim.o.showtabline = 0
