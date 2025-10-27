@@ -1,64 +1,53 @@
--- note: diagnostics are not exclusive to lsp servers
--- so these can be global keybindings
-vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>') 
+-- Global diagnostics mappings
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "Open diagnostic info" })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
+-- LSP attach callback: buffer-local mappings
 vim.api.nvim_create_autocmd('LspAttach', {
-    desc = 'LSP actions',
-    callback = function(event)
-        local opts = {buffer = event.buf}
+  desc = 'LSP actions',
+  callback = function(event)
+    local bufnr = event.buf
+    local opts  = { buffer = bufnr }
 
-        -- these will be buffer-local keybindings
-        -- because they only work if you have an active language server
-
-        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-        vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-        vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-        vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-        vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-        vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-        vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-    end
+    vim.keymap.set('n', 'K',   vim.lsp.buf.hover,         opts)
+    vim.keymap.set('n', 'gd',  vim.lsp.buf.definition,    opts)
+    vim.keymap.set('n', 'gD',  vim.lsp.buf.declaration,   opts)
+    vim.keymap.set('n', 'gi',  vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'go',  vim.lsp.buf.type_definition,opts)
+    vim.keymap.set('n', 'gr',  vim.lsp.buf.references,    opts)
+    vim.keymap.set('n', 'gs',  vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<F2>', vim.lsp.buf.rename,        opts)
+    vim.keymap.set({'n','x'}, '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts)
+    vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action,   opts)
+  end,
 })
 
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
+-- Setup Mason & Mason-LSPconfig to ensure servers installed
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {"pyright", "jdtls"},
-    handlers = {
-        function(server_name)
-            require('lspconfig')[server_name].setup({
-                capabilities = lsp_capabilities,
-            })
-        end,
-    },
+  ensure_installed = { "pyright", "jdtls" },
 })
 
-local cmp = require('cmp')
 
-cmp.setup({
-    preselect = cmp.PreselectMode.Item,
-    completion = {
-        completeopt = 'menu,menuone,noinsert'
+-- blink.cmp setup (replacing nvim-cmp)
+require('blink.cmp').setup({
+  -- keymap presets, snippet support, etc.
+  snippets = {
+    -- if using LuaSnip
+    preset = "luasnip",
+  },
+  appearance = {
+    use_nvim_cmp_as_default = true,
+    nerd_font_variant = "mono",
+  },
+  -- Optionally enable cmdline completions
+  cmdline = {
+    enabled = true,
+    -- config, e.g., for ":" and "/" search
+    functions = {
+      type = vim.fn.getcmdtype,
     },
-    sources = {
-        {name = 'nvim_lsp'},
-    },
-    mapping = cmp.mapping.preset.insert({
-        -- Enter key confirms completion item
-        ['<CR>'] = cmp.mapping.confirm({select = true, behavior = cmp.ConfirmBehavior.Insert}),
-        --Ctrl + space triggers completion menu
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-    }),
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
+  },
 })
+
