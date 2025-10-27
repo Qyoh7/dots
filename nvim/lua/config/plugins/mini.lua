@@ -7,10 +7,6 @@ return {
             statusline.setup { use_icons = true }
 	    require('mini.pairs').setup()
 	    require('mini.move').setup()
-	
-	    
-	    
-	    
         end
     }
 }
