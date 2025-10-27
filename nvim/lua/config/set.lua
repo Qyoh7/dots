@@ -1,6 +1,5 @@
 vim.opt.signcolumn = "yes"
 vim.wo.signcolumn = "yes"
-print("signcolumn is now set to:", vim.o.signcolumn)
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
