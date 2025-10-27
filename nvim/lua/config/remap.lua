@@ -13,6 +13,10 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+vim.keymap.set("n", "x", "\"_x", { desc = "Delete char without yanking" })
+vim.keymap.set("n", "X", "\"_X", { desc = "Delete backwards char without yanking" })
+vim.keymap.set("n", "<Del>", "\"_x", { desc = "Delete char via DEL without yanking" })
+
 vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
 
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

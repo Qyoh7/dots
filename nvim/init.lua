@@ -1,1 +1,5 @@
-require("qyoh")
+require("config.lazy")
+require('config.set')
+require('config.lsp')
+require('config.remap')
+require('config.java')
