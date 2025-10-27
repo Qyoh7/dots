@@ -8,10 +8,6 @@ fi
 
 configs=("waybar" "nvim" "ghostty" "qutebrowser" "rofi" "spicetify")
 
-echo "Copying over nvim config"
-rm -rf "$HOME/.config/nvim/"
-cp -r "$DEV_ENV/lazyvim" "$HOME/.config/nvim"
-
 
 if [ "$1" = "--desktop" ]; then
     echo "Copying over hyprland desktop config"
