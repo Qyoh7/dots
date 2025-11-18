@@ -19,7 +19,7 @@ elif [ "$1" = "--laptop" ]; then
     echo "Copying over hyprland laptop config"
     rm -rf "$HOME/.config/hypr/"
     cp -r "$DEV_ENV/hyprtop/" "$HOME/.config/hypr/"
-    cp "$DEV_ENV/scripts/tmux-sessionizer" "$HOME/.local/scripts"
+    cp "$DEV_ENV/scripts/tmux-sessionizer" "$HOME/.local/scripts/"
     mkdir -p "$HOME/.local/share/wallpapers"
     cp "$DEV_ENV/hyprtop/gruvbox-arch.png" "$HOME/.local/share/wallpapers"
 else
