@@ -119,13 +119,14 @@ alias blf='hyprshade toggle blue-light-filter'
 alias gs='git status'
 alias weather='curl wttr.in'
 
-export PATH="$PATH:/home/zayden/.local/bin"
-export PATH="$PATH:/home/zayden/.spicetify"
-export PATH="$PATH:/home/zayden/cloned/eww/target/release/"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.spicetify"
+export PATH="$PATH:$HOME/cloned/eww/target/release/"
 export PATH="$PATH:/var/lib/snapd/snap/bin"
-export PATH="$PATH:/home/zayden/.cargo/bin"
-export PATH="$PATH:/home/zayden/.local/scripts"
-export PATH_TO_FX="/home/zayden/java/javafx-sdk-24.0.1/lib"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/scripts"
+export PATH="$PATH:$HOME/go/bin"
+export PATH_TO_FX="$HOME/java/javafx-sdk-24.0.1/lib"
 
 bindkey -s ^f "tmux-sessionizer\n"
 source <(fzf --zsh)
