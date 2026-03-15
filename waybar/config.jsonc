@@ -1,19 +1,17 @@
-// -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "height": 24,
+    "spacing": 4,
+
     "modules-left": [
         "hyprland/workspaces",
         "custom/media",
-//        "custom/schedule",
         "hyprland/window"
     ],
+
     "modules-center": [
+        "clock"
     ],
+
     "modules-right": [
         "custom/pacman",
         "mpd",
@@ -22,85 +20,74 @@
         "temperature",
         "cpu",
         "memory",
-    	"battery",
+        "battery",
         "backlight",
-        "clock",
         "tray"
     ],
 
+    "hyprland/workspaces": {
+        "disable-click": true
+    },
+
+    "hyprland/window": {
+        "max-length": 1000
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "{:%m/%d/%Y    %I:%M:%S %p }",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{}% "
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
     "battery": {
-        "format": "{capacity}% {icon}  ",
-        "format-icons": ["", "", "", "", ""],
+        "format": "{capacity}% {icon}",
+        "format-icons": ["","","","",""],
         "format-time": "{H}h {M}m",
-        "format-charging": "  {capacity}% - {time}  ",
-        "format-full": " {icon} Charged  ",
+        "format-charging": " {capacity}% - {time}",
+        "format-full": " {icon} Charged",
         "states": {
             "warning": 25,
             "critical": 10
         },
-        "interval": 1,
+        "interval": 1
     },
+
     "backlight": {
-        "format": "{percent}%   ",
+        "format": "{percent}% "
     },
-    "custom/schedule": {
-        "exec": "SCHEDULE_DAY=A $HOME/.config/waybar/scripts/schedule.py",
-        "interval": 60
-    },
-    "hyprland/workspaces": {
-        "disable-click": true,
-    },
-    "hyprland/window": {
-        "max-length": 1000
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        "format": "{:%m/%d/%Y    %I:%M:%S %p }",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "interval": 1,
-    },
-    "cpu": {
-        "format": "{usage}%    ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}%    "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}   ",
-        "format-icons": ["", "", ""]
-    },
-    "custom/pacman": {
-        "format": "<big>󰮯</big>  {}",
-        "interval": 20,                     
-        "exec": "checkupdates | wc -l",       // # of updates
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "kitty -e 'yay'; pkill -sigrtmin+8 waybar", // update system
-        "signal": 8
-    },
+
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " <span font='12'>󰝟 {icon} {format_source}</span> ",
-        "format-muted": "󰝟 {format_source}",
-        "format-source": "",
-        "format-source-muted": "",
+        "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -108,10 +95,20 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["","",""]
         },
         "on-click": "pavucontrol"
     },
+
+    "custom/pacman": {
+        "format": "󰮯 {}",
+        "interval": 20,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "kitty -e yay; pkill -sigrtmin+8 waybar",
+        "signal": 8
+    },
+
     "custom/media": {
         "format": "{0} {1}",
         "return-type": "json",
@@ -121,6 +118,6 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/custom_modules/mediaplayer.py 2> /dev/null" // Script in resources folder
-    },
+        "exec": "$HOME/.config/waybar/custom_modules/mediaplayer.py 2> /dev/null"
+    }
 }
