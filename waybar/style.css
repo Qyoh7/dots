@@ -153,6 +153,10 @@ window#waybar {
     color: @blue;
 }
 
+#backlight {
+    color: @yellow;
+}
+
 #custom-pacman {
     color: @yellow;
 }

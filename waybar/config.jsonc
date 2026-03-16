@@ -4,25 +4,25 @@
 
     "modules-left": [
         "hyprland/workspaces",
+        "bluetooth",
         "custom/media",
         "hyprland/window"
     ],
 
     "modules-center": [
+        "custom/pacman",
         "clock"
     ],
 
     "modules-right": [
-        "custom/pacman",
         "mpd",
-        "bluetooth",
         "pulseaudio",
+        "backlight",
         "network",
         "temperature",
         "cpu",
         "memory",
         "battery",
-        "backlight",
         "tray"
     ],
 
