@@ -13,6 +13,7 @@
 @define-color red #fb4934;
 @define-color purple #b16286;
 @define-color aqua #8ec07c;
+@define-color blue #83a598;
 
 /* -----------------------------
    Global
@@ -42,6 +43,7 @@ window#waybar {
 #clock,
 #custom-pacman,
 #tray,
+#bluetooth,
 #mpd {
     background: @surface;
     padding: 0 12px;
@@ -59,6 +61,7 @@ window#waybar {
 #battery:hover,
 #backlight:hover,
 #clock:hover,
+#bluetooth:hover,
 #custom-pacman:hover {
     background: @surface-light;
 }
@@ -144,6 +147,10 @@ window#waybar {
 #clock {
     color: @text;
     min-width: 165px;
+}
+
+#bluetooth {
+    color: @blue;
 }
 
 #custom-pacman {
