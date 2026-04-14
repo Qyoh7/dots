@@ -126,6 +126,8 @@ export PATH="$PATH:/var/lib/snapd/snap/bin/"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/scripts/"
 export PATH="$PATH:$HOME/go/bin/"
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=kvantum
 export PATH_TO_FX="$HOME/java/javafx-sdk-24.0.1/lib/"
 
 bindkey -s ^f "tmux-sessionizer\n"
