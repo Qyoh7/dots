@@ -173,8 +173,8 @@ for i = 1, 10 do
 end
 
 for i = 1, 10 do
-    hl.bind(mainMod .. " + F" .. i,             hl.dsp.focus({ workspace = i + 10}))
-    hl.bind(mainMod .. " + SHIFT + F" .. i,     hl.dsp.window.move({ workspace = i + 10}))
+    hl.bind(mainMod .. " + " .. i,             hl.dsp.focus({ workspace = i + 10}))
+    hl.bind(mainMod .. " + SHIFT + " .. i,     hl.dsp.window.move({ workspace = i + 10}))
 end
 
 -- drag and resize

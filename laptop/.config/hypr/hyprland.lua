@@ -36,7 +36,7 @@ local runmenu = "rofi -show run"
 ---- AUTOSTART ----
 -------------------
 
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
   hl.exec_cmd("waybar & hypridle & awww-daemon")
   hl.exec_cmd("awww img ~/.local/share/wallpapers/gruvbox-arch.png")
   hl.exec_cmd("hyprshade on blue-light-filter")
