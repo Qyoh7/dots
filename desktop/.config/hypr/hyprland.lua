@@ -1,32 +1,25 @@
--- This is an example Hyprland Lua config file.
--- Refer to the wiki for more information.
--- https://wiki.hypr.land/Configuring/Start/
-
--- Please note not all available settings / options are set here.
--- For a full list, see the wiki
-
--- You can (and should!!) split this configuration into multiple files
--- Create your files separately and then require them like this:
--- require("myColors")
-
-
 ------------------
 ---- MONITORS ----
 ------------------
 
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "eDP-1",
-    mode     = "1920x1080",
-    position = "auto",
-    scale    = "1.25",
+    output   = "DP-1",
+    mode     = "1600x900@60",
+    position = "0x0",
+    scale    = "1",
+})
+
+hl.monitor({
+    output   = "DP-3",
+    mode     = "1920x1080@165",
+    position = "1600x0",
+    scale    = "1",
 })
 
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
 
--- Set programs that you use
 local terminal    = "ghostty"
 local fileManager = "dolphin"
 local menu = "rofi -show drun"
@@ -37,10 +30,11 @@ local runmenu = "rofi -show run"
 -------------------
 
 hl.on("hyprland.start", function () 
-  hl.exec_cmd("waybar & hypridle & awww-daemon")
+  hl.exec_cmd("waybar & awww-daemon")
   hl.exec_cmd("awww img ~/.local/share/wallpapers/gruvbox-arch.png")
-  hl.exec_cmd("hyprshade on blue-light-filter")
   hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
+  hl.exec_cmd("hyprshade on blue-light-filter")
+  hl.exec_cmd("hyprctl dispatch workspace 1")
 end)
 
 
@@ -51,6 +45,9 @@ end)
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("QT_QPA_PLATFORMTHEME","qt6ct")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -131,27 +128,10 @@ hl.config({
         kb_options = "",
 
         follow_mouse = 1,
-        sensitivity = -0.3,
+        sensitivity = -0.5,
         accel_profile = "flat",
-
-        touchpad = {
-            natural_scroll = true,
-            scroll_factor = 0.4
-        },
     },
 })
-
-hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace"
-})
-
-hl.device({
-    name        = "syna800e:00-06cb:ce67-mouse",
-    sensitivity = -0.3,
-})
-
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -169,14 +149,15 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprshade toggle blue-light-filter")
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(runmenu))
 
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("pavucontrol"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("atlauncher"))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser -p Qyoh"))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("zen-browser -p Zayden"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("ghostty -e bluetuith"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("ghostty -e nmtui"))
 
-hl.bind("Print", hl.dsp.exec_cmd("grim -g '$(slurp)'"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("grim -g '$(slurp)'"))
 
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("bash ~/.config/waybar/launch.sh"))
 
@@ -191,27 +172,28 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
+for i = 1, 10 do
+    hl.bind(mainMod .. " + F" .. i,             hl.dsp.focus({ workspace = i + 10}))
+    hl.bind(mainMod .. " + SHIFT + F" .. i,     hl.dsp.window.move({ workspace = i + 10}))
+end
+
 -- drag and resize
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Laptop multimedia keys for
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("playerctl play-pause"),                           { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
 
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
-
--- Example window rules that are useful
+-- 2nd monitor workspaces
+--
+for i = 11, 20 do
+    hl.dsp.workspace.move({i, "DP-1"})
+end
 
 hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
