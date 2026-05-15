@@ -105,29 +105,20 @@ source $ZSH/oh-my-zsh.sh
 #
 alias grep='grep --color=auto'
 alias c='clear'
-alias nf='fastfetch'
-alias pf='fastfetch'
-alias ff='fastfetch'
-alias ls='eza -a --icons=always'
+alias ll='eza -a --icons=always'
 alias lt='eza -al --icons=always'
-alias ll='eza -a --tree --level=1 --icons=always --sort=extension'
-alias shutdown='systemctl poweroff'
+alias ls='eza -a --tree --level=1 --icons=always --sort=extension'
 alias vim=nvim
-alias wifi='nmtui'
 alias bt='bluetuith'
 alias blf='hyprshade toggle blue-light-filter'
 alias gs='git status'
 alias weather='curl wttr.in'
 
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.spicetify"
-export PATH="$PATH:$HOME/cloned/eww/target/release/"
 export PATH="$PATH:/var/lib/snapd/snap/bin/"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/scripts/"
 export PATH="$PATH:$HOME/go/bin/"
-export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_STYLE_OVERRIDE=kvantum
 export PATH_TO_FX="$HOME/java/javafx-sdk-24.0.1/lib/"
 
 bindkey -s ^f "tmux-sessionizer\n"
