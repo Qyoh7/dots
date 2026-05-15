@@ -29,7 +29,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal    = "ghostty"
 local fileManager = "dolphin"
-local menu = "rofi -show drum"
+local menu = "rofi -show drun"
 local runmenu = "rofi -show run"
 
 -------------------
