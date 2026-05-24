@@ -131,6 +131,9 @@ hl.config({
         sensitivity = -0.5,
         accel_profile = "flat",
     },
+    cursor = {
+        default_monitor = "DP-3"
+    }
 })
 
 ---------------------
@@ -172,10 +175,16 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
-for i = 1, 10 do
-    hl.bind(mainMod .. " + " .. i,             hl.dsp.focus({ workspace = i + 10}))
-    hl.bind(mainMod .. " + SHIFT + " .. i,     hl.dsp.window.move({ workspace = i + 10}))
+for i = 11, 20 do
+    local fkey = i - 10 -- 11->1, 20->10
+    hl.bind(mainMod .. " + F" .. fkey,
+        hl.dsp.focus({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + F" .. fkey,
+        hl.dsp.window.move({ workspace = i }))
 end
+
+hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- drag and resize
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
@@ -189,10 +198,20 @@ hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("playerctl play-pause"),        
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
--- 2nd monitor workspaces
---
+for i = 1, 10 do
+    hl.workspace_rule({
+        workspace = tostring(i),
+        monitor = "DP-3",
+        default = (i == 1),
+    })
+end
+
 for i = 11, 20 do
-    hl.dsp.workspace.move({i, "DP-1"})
+    hl.workspace_rule({
+        workspace = tostring(i),
+        monitor = "DP-1",
+        default = (i == 11),
+    })
 end
 
 hl.window_rule({
