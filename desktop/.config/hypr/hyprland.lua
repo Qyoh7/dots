@@ -161,7 +161,7 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("zen-browser -p Zayden"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("ghostty -e bluetuith"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("ghostty -e nmtui"))
 
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("grim -g '$(slurp)'"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("grimblast copysave area"))
 
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("bash ~/.config/waybar/launch.sh"))
 
