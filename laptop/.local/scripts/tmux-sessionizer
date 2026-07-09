@@ -3,7 +3,8 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /home ~/personal ~/personal/projects ~/personal/projects/vex ~/dots -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find /home ~/personal ~/personal/projects ~/personal/projects/vex ~/dots \
+        -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -13,17 +14,38 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+# If tmux isn't running, create the session with the full layout.
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -d -s "$selected_name" -c "$selected" -n editor
+
+    tmux send-keys -t "$selected_name:editor" "nvim" C-m
+    tmux new-window -t "$selected_name" -n build -c "$selected"
+    tmux new-window -t "$selected_name" -n git   -c "$selected"
+    tmux send-keys -t "$selected_name:git" "git status" C-m
+    tmux new-window -t "$selected_name" -n misc  -c "$selected"
+    tmux send-keys -t "$selected_name:misc" "eza -a --tree --level=1 --icons=always --sort=extension" C-m
+
+    tmux select-window -t "$selected_name:editor"
+    tmux attach -t "$selected_name"
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+# Create the session if it doesn't already exist.
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+    tmux new-session -d -s "$selected_name" -c "$selected" -n editor
+
+    tmux send-keys -t "$selected_name:editor" "nvim" C-m
+    tmux new-window -t "$selected_name" -n build -c "$selected"
+    tmux new-window -t "$selected_name" -n git   -c "$selected"
+    tmux send-keys -t "$selected_name:git" "git status" C-m
+    tmux new-window -t "$selected_name" -n misc  -c "$selected"
+    tmux send-keys -t "$selected_name:misc" "eza -a --tree --level=1 --icons=always --sort=extension" C-m
+
+    tmux select-window -t "$selected_name:editor"
 fi
 
 if [[ -z $TMUX ]]; then
-    tmux attach -t $selected_name
+    tmux attach -t "$selected_name"
 else
-    tmux switch-client -t $selected_name
+    tmux switch-client -t "$selected_name"
 fi

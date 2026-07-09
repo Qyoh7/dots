@@ -26,3 +26,15 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>")
 vim.keymap.set("n", "<S-Tab>", "<cmd>bnext<CR>")
+
+vim.keymap.set("n", "<leader>b", function()
+    vim.fn.system("tmux send-keys -t build 'cmake --build build' Enter")
+end)
+
+vim.keymap.set("n", "<leader>r", function()
+    vim.fn.system("tmux send-keys -t build './build/Nesmulator' Enter")
+end)
+
+vim.keymap.set("n", "<leader>R", function()
+    vim.fn.system("tmux send-keys -t build 'cmake --build build && ./build/Nesmulator' Enter")
+end)
