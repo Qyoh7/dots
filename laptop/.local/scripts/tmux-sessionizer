@@ -20,10 +20,10 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
 
     tmux send-keys -t "$selected_name:editor" "nvim" C-m
     tmux new-window -t "$selected_name" -n build -c "$selected"
-    tmux new-window -t "$selected_name" -n git   -c "$selected"
-    tmux send-keys -t "$selected_name:git" "git status" C-m
     tmux new-window -t "$selected_name" -n misc  -c "$selected"
     tmux send-keys -t "$selected_name:misc" "eza -a --tree --level=1 --icons=always --sort=extension" C-m
+    tmux new-window -t "$selected_name" -n git   -c "$selected"
+    tmux send-keys -t "$selected_name:git" "git status" C-m
 
     tmux select-window -t "$selected_name:editor"
     tmux attach -t "$selected_name"
@@ -36,10 +36,10 @@ if ! tmux has-session -t="$selected_name" 2>/dev/null; then
 
     tmux send-keys -t "$selected_name:editor" "nvim" C-m
     tmux new-window -t "$selected_name" -n build -c "$selected"
-    tmux new-window -t "$selected_name" -n git   -c "$selected"
-    tmux send-keys -t "$selected_name:git" "git status" C-m
     tmux new-window -t "$selected_name" -n misc  -c "$selected"
     tmux send-keys -t "$selected_name:misc" "eza -a --tree --level=1 --icons=always --sort=extension" C-m
+    tmux new-window -t "$selected_name" -n git   -c "$selected"
+    tmux send-keys -t "$selected_name:git" "git status" C-m
 
     tmux select-window -t "$selected_name:editor"
 fi
