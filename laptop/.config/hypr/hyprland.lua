@@ -152,6 +152,10 @@ hl.device({
     sensitivity = -0.3,
 })
 
+hl.device({
+	name = 'at-translated-set-2-keyboard',
+    kb_options = 'caps:swapescape'
+})
 
 ---------------------
 ---- KEYBINDINGS ----
