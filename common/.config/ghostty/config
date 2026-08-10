@@ -3,4 +3,3 @@ font-family = JetBrainsMono Nerd Font
 font-size = 16
 adjust-cursor-thickness = 2
 confirm-close-surface = false
-term = xterm-256color
