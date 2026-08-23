@@ -6,16 +6,10 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         lazy = false,
+        branch = "main",
         build = ':TSUpdate',
         config = function()
-            vim.api.nvim_create_autocmd("FileType", {
-                callback = function()
-                    local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
-                    if lang and vim.treesitter.language.add(lang) then
-                        vim.treesitter.start()
-                    end
-                end,
-            })
+            require("config.treesitter")
         end
 
     },
@@ -40,7 +34,20 @@ return {
         "mason-org/mason.nvim",
         opts = {},
     },
-    { "neovim/nvim-lspconfig" },
+    { 
+        "neovim/nvim-lspconfig",
+        config = function()
+            vim.keymap.set('n', 'K',   vim.lsp.buf.hover,         opts)
+            vim.keymap.set('n', 'gd',  vim.lsp.buf.definition,    opts)
+            vim.keymap.set('n', 'gD',  vim.lsp.buf.declaration,   opts)
+            vim.keymap.set('n', 'gi',  vim.lsp.buf.implementation, opts)
+            vim.keymap.set('n', 'go',  vim.lsp.buf.type_definition,opts)
+            vim.keymap.set('n', 'gr',  vim.lsp.buf.references,    opts)
+            vim.keymap.set('n', 'gs',  vim.lsp.buf.signature_help, opts)
+            vim.keymap.set('n', '<F2>', vim.lsp.buf.rename,        opts)
+            vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action,   opts)
+        end
+    },
     {
         "mason-org/mason-lspconfig.nvim",
         dependencies = {
