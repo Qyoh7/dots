@@ -77,6 +77,50 @@ hl.config({
     animations = {
         enabled = true,
     },
+    group = {
+        groupbar = {
+            enabled = true,
+
+            -- i3-ish geometry
+            height = 20,
+            gaps_in = 0,
+            gaps_out = 0,
+
+            -- No fancy gradients / rounded pills
+            gradients = false,
+            gradient_rounding = 0,
+            gradient_round_only_edges = false,
+            rounding = 0,
+            round_only_edges = false,
+
+            -- Text
+            render_titles = true,
+            font_size = 13,
+            font_weight_active = "bold",
+            font_weight_inactive = "normal",
+            text_padding = 7,
+            text_offset = 0,
+
+            -- Gruvbox-ish text
+            text_color = "0xffebdbb2",
+            text_color_inactive = "0xffa89984",
+
+            -- Don't blur the bar
+            blur = false,
+
+            -- Useful behavior
+            middle_click_close = true,
+            disable_when_only = true,
+
+            -- Active/inactive tab backgrounds
+            col = {
+                active = "0xff458588",
+                inactive = "0xff3c3836",
+                locked_active = "0xffd79921",
+                locked_inactive = "0xff504945",
+            },
+        },
+    }
 })
 
 hl.curve("decel",       { type = "bezier", points = { {0.05, 0.7},  {0.01, 1}    } })
@@ -182,6 +226,10 @@ hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
+
+hl.bind(mainMod .. " + TAB", hl.dsp.group.next())
+hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.group.prev())
 
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
