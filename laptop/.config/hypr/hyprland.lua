@@ -1,20 +1,7 @@
--- This is an example Hyprland Lua config file.
--- Refer to the wiki for more information.
--- https://wiki.hypr.land/Configuring/Start/
-
--- Please note not all available settings / options are set here.
--- For a full list, see the wiki
-
--- You can (and should!!) split this configuration into multiple files
--- Create your files separately and then require them like this:
--- require("myColors")
-
-
 ------------------
 ---- MONITORS ----
 ------------------
 
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
     output   = "eDP-1",
     mode     = "1920x1080",
@@ -26,7 +13,6 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 
--- Set programs that you use
 local terminal    = "ghostty"
 local fileManager = "dolphin"
 local menu = "rofi -show drun"
@@ -37,10 +23,10 @@ local runmenu = "rofi -show run"
 -------------------
 
 hl.on("hyprland.start", function ()
-  hl.exec_cmd("waybar & hypridle & awww-daemon")
-  hl.exec_cmd("awww img ~/.local/share/wallpapers/gruvbox-arch.png")
-  hl.exec_cmd("hyprshade on blue-light-filter")
-  hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
+    hl.exec_cmd("waybar & hypridle & awww-daemon")
+    hl.exec_cmd("awww img ~/.local/share/wallpapers/gruvbox-arch.png")
+    hl.exec_cmd("hyprshade on blue-light-filter")
+    hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
 end)
 
 
@@ -105,8 +91,13 @@ hl.animation({ leaf = "workspaces",    enabled = true,  speed = 2, bezier = "eas
 
 hl.config({
     dwindle = {
-        preserve_split = true, -- You probably want this
+        preserve_split = true,
     },
+    hl.config({
+        xwayland = {
+            force_zero_scaling = true
+        }
+    })
 })
 
 ----------------
@@ -118,6 +109,9 @@ hl.config({
         force_default_wallpaper = 1,
         disable_hyprland_logo   = true,
     },
+    xwayland = {
+        force_zero_scaling = true
+    }
 })
 
 
@@ -153,7 +147,7 @@ hl.device({
 })
 
 hl.device({
-	name = 'at-translated-set-2-keyboard',
+    name = 'at-translated-set-2-keyboard',
     kb_options = 'caps:swapescape'
 })
 
@@ -199,7 +193,7 @@ end
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Laptop multimedia keys for
+-- Laptop multimedia keys
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
@@ -212,21 +206,13 @@ hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-")
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
-
--- Example window rules that are useful
-
 hl.window_rule({
-    -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
     match = { class = ".*" },
-
     suppress_event = "maximize",
 })
 
 hl.window_rule({
-    -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
         class      = "^$",
@@ -243,7 +229,6 @@ hl.window_rule({
 hl.window_rule({
     name  = "move-hyprland-run",
     match = { class = "hyprland-run" },
-
     move  = "20 monitor_h-120",
     float = true,
 })
