@@ -38,8 +38,8 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             vim.keymap.set('n', 'gl',  vim.diagnostic.open_float)
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+            vim.keymap.set('n', 'gp', function() vim.diagnostic.jump({count = -1}) end)
+            vim.keymap.set('n', 'gn', function() vim.diagnostic.jump({count = 1}) end)
             vim.keymap.set('n', 'K',   vim.lsp.buf.hover,         opts)
             vim.keymap.set('n', 'gd',  vim.lsp.buf.definition,    opts)
             vim.keymap.set('n', 'gD',  vim.lsp.buf.declaration,   opts)
