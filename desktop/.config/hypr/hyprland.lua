@@ -136,6 +136,11 @@ hl.config({
     }
 })
 
+hl.device({
+    name = "sonix-yz87",
+    kb_options = "caps:swapescape",
+})
+
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
