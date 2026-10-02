@@ -22,6 +22,6 @@ esac
 
 pandoc \
     --pdf-engine weasyprint \
-    --css "../themes/mdthemes/themes/$theme.css" \
+    --css "$HOME/.local/themes/mdthemes/themes/$theme.css" \
     -o "$output" \
     "$input"
