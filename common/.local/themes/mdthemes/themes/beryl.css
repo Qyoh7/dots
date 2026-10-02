@@ -1,0 +1,364 @@
+:root {
+  --fg-color: #222f3d;
+  --bg-color: #ffffff;
+  --primary-fg-color: #42b983;
+  --primary-bg-color: #f7fffc;
+  --ghost-fg-color: #bababa;
+  --ghost-bg-color: #f7f7f7;
+  --code-fg-color: #e96a04;
+
+  --base-font-size: 11pt;
+  --ol-marker-weight: 400;
+  --ul-marker-weight: 900;
+
+  --info-fg-color: #94bfff;
+  --info-bg-color: #f5f9ff;
+  --info-border-color: #a8cbff;
+
+  --tip-fg-color: #92e07d;
+  --tip-bg-color: #fbfffa;
+  --tip-border-color: #caf0c0;
+
+  --warning-fg-color: #ffc214;
+  --warning-bg-color: #fff9e6;
+  --warning-border-color: #ffe7a3;
+
+  --danger-fg-color: #fc8d93;
+  --danger-bg-color: #fcebec;
+  --danger-border-color: #fcc2c5;
+}
+
+@page {
+  size: letter;
+  margin: 0.5in;
+  background-color: var(--bg-color);
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans Regular"),
+    url("../fonts/NotoSans-VariableFont_wdth\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Noto Sans Italic"),
+    url("../fonts/NotoSans-Italic-VariableFont_wdth\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Noto Sans SemiBold"),
+    url("../fonts/NotoSans-VariableFont_wdth\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Noto Sans Bold"),
+    url("../fonts/NotoSans-VariableFont_wdth\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: italic;
+  font-weight: 700;
+  src: local("NotoSans Bold Italic"),
+    url("../fonts/NotoSans-Italic-VariableFont_wdth\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 900;
+  src: local("Noto Sans Black"),
+    url("../fonts/NotoSans-VariableFont_wdth\,wght.ttf") format("ttf");
+}
+
+/*
+ * We support both Fira Mono and Fira Code because Fira Code supports
+ * ligatures, which we only want to use in code blocks.
+ */
+
+@font-face {
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Fira Mono Regular"),
+    url("../fonts/FiraMono-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Fira Mono Bold"), url("../fonts/FiraMono-Bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Fira Code Regular"),
+    url("../fonts/FiraCode-VariableFont_wght.ttf") format("ttf");
+}
+
+/* The bold weight may be used for syntax highlighting. */
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Fira Code Bold"),
+    url("../fonts/FiraCode-VariableFont_wght.ttf") format("ttf");
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  font-size: var(--base-font-size);
+  color: var(--fg-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  color: var(--ghost-fg-color);
+  font-size: var(--base-font-size);
+  font-family: "Fira Mono", monospace;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h1::before {
+  content: "H1 ";
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h2::before {
+  content: "H2 ";
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+h3::before {
+  content: "H3 ";
+}
+
+h4 {
+  font-size: 1.4em;
+}
+
+h4::before {
+  content: "H4 ";
+}
+
+h5 {
+  font-size: 1.2em;
+}
+
+h5::before {
+  content: "H5 ";
+}
+
+h6 {
+  font-size: 1em;
+}
+
+h6::before {
+  content: "H6 ";
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--ghost-fg-color);
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+a {
+  color: var(--primary-fg-color);
+  font-weight: 600;
+}
+
+del {
+  color: var(--ghost-fg-color);
+}
+
+:not(pre) > code {
+  color: var(--code-fg-color);
+  background-color: var(--ghost-bg-color);
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.1rem;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+}
+
+pre {
+  font-family: "Fira Mono", monospace;
+  background-color: var(--ghost-bg-color);
+  padding: 0.6rem;
+  border-radius: 0.1rem;
+  break-inside: avoid;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0.6rem;
+  padding-left: 1.5rem;
+  border-left: 4px solid var(--primary-fg-color);
+  background-color: var(--primary-bg-color);
+  break-inside: avoid;
+}
+
+blockquote > p:first-child {
+  margin-top: 0;
+}
+
+blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+ol,
+ul {
+  padding-left: 1rem;
+  line-height: 1.5;
+}
+
+/* 
+ * This affects the padding of lists relative to the page, but not the padding
+ * of nested lists relative to their parent list.
+ */
+
+:not(li) > ol,
+:not(li) > ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  text-indent: 4px;
+}
+
+ol > li::marker {
+  font-weight: var(--ol-marker-weight);
+}
+
+ul > li::marker {
+  font-weight: var(--ul-marker-weight);
+}
+
+table {
+  width: 100%;
+  overflow-wrap: anywhere;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+table :is(th, td) {
+  border: 1px solid var(--ghost-fg-color);
+  padding: 0.4rem;
+}
+
+table > thead {
+  background-color: var(--ghost-bg-color);
+}
+
+table > tbody > tr:nth-child(even) {
+  background-color: var(--ghost-bg-color);
+}
+
+img {
+  width: 100%;
+}
+
+pre:is(
+    .callout\:info,
+    .callout\:tip,
+    .callout\:warning,
+    .callout\:danger
+  )::before {
+  font-family: "Noto Sans", sans-serif;
+  display: block;
+  font-weight: 600;
+  padding-bottom: 0.2rem;
+}
+
+pre:is(.callout\:info, .callout\:tip, .callout\:warning, .callout\:danger) {
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 0.8em;
+}
+pre:is(.callout\:info, .callout\:tip, .callout\:warning, .callout\:danger)
+  > code {
+  font-family: "Inter", sans-serif;
+}
+
+pre.callout\:info::before {
+  content: "ℹ️  Info";
+  color: var(--info-fg-color);
+}
+
+pre.callout\:info {
+  background-color: var(--info-bg-color);
+  border-color: var(--info-border-color);
+}
+
+pre.callout\:tip::before {
+  content: "💡  Tip";
+  color: var(--tip-fg-color);
+}
+
+pre.callout\:tip {
+  background-color: var(--tip-bg-color);
+  border-color: var(--tip-border-color);
+}
+
+pre.callout\:warning::before {
+  content: "⚠️  Warning";
+  color: var(--warning-fg-color);
+}
+
+pre.callout\:warning {
+  background-color: var(--warning-bg-color);
+  border-color: var(--warning-border-color);
+}
+
+pre.callout\:danger::before {
+  content: "⛔️  Danger";
+  color: var(--danger-fg-color);
+}
+
+pre.callout\:danger {
+  background-color: var(--danger-bg-color);
+  border-color: var(--danger-border-color);
+}

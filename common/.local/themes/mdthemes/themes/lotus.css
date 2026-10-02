@@ -1,0 +1,201 @@
+:root {
+  --fg-color: #3c4257;
+  --bg-color: #ffffff;
+  --primary-color: #8199eb;
+  --primary-light-color: #9ba9d5;
+  --primary-ghost-color: #f5f7ff;
+}
+
+@page {
+  size: letter;
+  margin: 0.5in;
+  background-color: var(--bg-color);
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Inter Regular"),
+    url("../fonts/Inter-VariableFont_opsz\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Inter Italic"),
+    url("../fonts/Inter-Italic-VariableFont_opsz\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Inter Bold"),
+    url("../fonts/Inter-VariableFont_opsz\,wght.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 700;
+  src: local("Inter Bold Italic"),
+    url("../fonts/Inter-Italic-VariableFont_opsz\,wght.ttf") format("ttf");
+}
+
+/*
+ * We support both Fira Mono and Fira Code because Fira Code supports
+ * ligatures, which we only want to use in code blocks.
+ */
+
+@font-face {
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Fira Mono Regular"),
+    url("../fonts/FiraMono-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Fira Code Regular"),
+    url("../fonts/FiraCode-VariableFont_wght.ttf") format("ttf");
+}
+
+/* The bold weight may be used for syntax highlighting. */
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Fira Code Bold"),
+    url("../fonts/FiraCode-VariableFont_wght.ttf") format("ttf");
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--fg-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+blockquote {
+  margin: 0;
+  padding: 0.6rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--primary-light-color);
+  background-color: var(--primary-ghost-color);
+  break-inside: avoid;
+}
+
+blockquote > p:first-child {
+  margin-top: 0;
+}
+
+blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+hr::before {
+  content: "• • •";
+  color: var(--primary-light-color);
+}
+
+hr {
+  border: 0;
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: "Fira Mono", monospace;
+}
+
+pre {
+  font-family: "Fira Mono", monospace;
+  background-color: var(--primary-ghost-color);
+  border: 1px solid var(--primary-light-color);
+  padding: 0.8rem;
+  border-radius: 2px;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+}
+
+:not(pre) > code {
+  background-color: var(--primary-ghost-color);
+  border: 1px solid var(--primary-light-color);
+  padding: 0.1rem 0.2rem;
+  border-radius: 2px;
+}
+
+li > ol,
+li > ul {
+  padding-left: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table :is(th, td) {
+  border: 1px solid var(--primary-light-color);
+  padding: 0.4rem;
+}
+
+table > thead {
+  background-color: var(--primary-ghost-color);
+}
+
+table > thead > tr > th {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+table > tbody > tr:nth-child(even) {
+  background-color: var(--primary-ghost-color);
+}
+
+img {
+  width: 100%;
+}

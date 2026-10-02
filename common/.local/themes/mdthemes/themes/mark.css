@@ -1,0 +1,251 @@
+:root {
+  --fg-color: #000000;
+  --bg-color: #ffffff;
+  --ghost-fg-color: #a3a3a3;
+  --link-color: #0969da;
+
+  --base-font-size: 11pt;
+  --heading-font-size: 14pt;
+}
+
+@page {
+  size: letter;
+  margin: 0.5in;
+  background-color: var(--bg-color);
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Zilla Slab Regular"),
+    url("../fonts/ZillaSlab-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Zilla Slab Italic"),
+    url("../fonts/ZillaSlab-Italic.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Zilla Slab Bold"),
+    url("../fonts/ZillaSlab-Bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  font-style: italic;
+  font-weight: 700;
+  src: local("Zilla Slab Bold Italic"),
+    url("../fonts/ZillaSlab-BoldItalic.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Fira Mono Regular"),
+    url("../fonts/FiraMono-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Fira Mono Bold"), url("../fonts/FiraMono-Bold.ttf") format("ttf");
+}
+
+body {
+  font-family: "Zilla Slab", sans-serif;
+  font-size: var(--base-font-size);
+  color: var(--fg-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--heading-font-size);
+  font-weight: bold;
+
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  color: var(--ghost-fg-color);
+  font-family: "Fira Mono", monospace;
+  font-weight: bold;
+}
+
+h1::before {
+  content: "# ";
+}
+
+h2::before {
+  content: "## ";
+}
+
+h3::before {
+  content: "### ";
+}
+
+h4::before {
+  content: "#### ";
+}
+
+h5::before {
+  content: "##### ";
+}
+
+h6::before {
+  content: "###### ";
+}
+
+strong::before,
+strong::after,
+em::before,
+em::after,
+del::before,
+del::after {
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+strong::before {
+  content: "**";
+  color: var(--ghost-fg-color);
+}
+
+strong::after {
+  content: "**";
+  color: var(--ghost-fg-color);
+}
+
+em::before {
+  content: "*";
+  color: var(--ghost-fg-color);
+}
+
+em::after {
+  content: "*";
+  color: var(--ghost-fg-color);
+}
+
+del::before {
+  content: "~~";
+  color: var(--ghost-fg-color);
+}
+
+del::after {
+  content: "~~";
+  color: var(--ghost-fg-color);
+}
+
+:not(pre) > code::before {
+  content: "`";
+  color: var(--ghost-fg-color);
+}
+
+:not(pre) > code::after {
+  content: "`";
+  color: var(--ghost-fg-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid var(--fg-color);
+  break-inside: avoid;
+}
+
+hr {
+  border: 0;
+}
+
+hr::before {
+  color: var(--fg-color);
+  content: "-----";
+}
+
+ol,
+ul {
+  padding-left: 1rem;
+  line-height: 1.25;
+}
+
+/* 
+ * This affects the padding of lists relative to the page, but not the padding
+ * of nested lists relative to their parent list.
+ */
+
+:not(li) > ol,
+:not(li) > ul {
+  padding-left: 2rem;
+}
+
+li {
+  text-indent: 4px;
+}
+
+ul > li {
+  list-style-type: "*";
+}
+
+pre {
+  font-family: "Fira Mono", monospace;
+  break-inside: avoid;
+}
+
+pre > code::before {
+  font-family: "Fira Mono", monospace;
+  color: var(--ghost-fg-color);
+  display: block;
+  content: "```";
+}
+
+pre > code::after {
+  font-family: "Fira Mono", monospace;
+  color: var(--ghost-fg-color);
+  display: block;
+  content: "```";
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 6px;
+}
+
+table :is(th, td) {
+  border-left: 1px solid var(--ghost-fg-color);
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+table :is(th, td):last-child {
+  border-right: 1px solid var(--ghost-fg-color);
+}
+
+img {
+  width: 100%;
+}

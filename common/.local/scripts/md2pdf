@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+if [[ $# -ne 3 ]]; then
+    echo "Usage: $0 <input.md> <output.pdf> <theme>"
+    echo "Themes: beryl, lotus, mark, stain"
+    exit 1
+fi
+
+input="$1"
+output="$2"
+theme="$3"
+
+case "$theme" in
+    beryl|lotus|mark|stain)
+        ;;
+    *)
+        echo "Error: invalid theme '$theme'"
+        echo "Available themes: beryl, lotus, mark, stain"
+        exit 1
+        ;;
+esac
+
+pandoc \
+    --pdf-engine weasyprint \
+    --css "../themes/mdthemes/themes/$theme.css" \
+    -o "$output" \
+    "$input"
