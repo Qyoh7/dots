@@ -96,10 +96,19 @@ return {
         opts_extend = { "sources.default" }
     },
     {
-
-        "tpope/vim-fugitive",
-        config = function()
-            vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+        "NeogitOrg/neogit",
+        lazy = true,
+        dependencies = {
+            "sindrets/diffview.nvim",        -- optional
+            -- For a custom log pager
+            "m00qek/baleia.nvim",            -- optional
+        },
+        cmd = "Neogit",
+        keys = {
+            { "<leader>gs", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+        },
+        config = function ()
+            require("config.neogit")
         end
     },
     {
