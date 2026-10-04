@@ -61,7 +61,6 @@ return {
             ensure_installed = {
                 "clangd",
                 "lua_ls",
-                -- "jdtls",
             },
             automatic_enable = true,
         },
@@ -118,6 +117,18 @@ return {
         end
     },
     {
-        "tpope/vim-vinegar",
+        "X3eRo0/dired.nvim",
+        dependencies = "MunifTanjim/nui.nvim",
+        config = function()
+            require("dired").setup {
+        --         path_separator = "/",
+        --         show_banner = false,
+        --         show_icons = false,
+        --         show_hidden = true,
+        --         show_dot_dirs = true,
+        --         show_colors = true,
+            }
+            vim.keymap.set("n", "<leader>e", "<cmd>Dired<cr>")
+        end
     }
 }
