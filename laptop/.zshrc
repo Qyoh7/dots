@@ -22,8 +22,8 @@ export PATH="$PATH:/var/lib/snapd/snap/bin/"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/scripts/"
 export PATH="$PATH:$HOME/go/bin/"
+export PATH="$PATH:$HOME/gcc-arm-none-eabi-8-2019-q3-update/bin/"
 export PATH_TO_FX="$HOME/java/javafx-sdk-24.0.1/lib/"
-
 bindkey -s ^f "tmux-sessionizer\n"
 source <(fzf --zsh)
 
