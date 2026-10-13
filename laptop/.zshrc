@@ -8,9 +8,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias grep='grep --color=auto'
 alias c='clear'
-alias ls='eza'
-alias lt='eza -al --icons=always'
-alias ll='eza -a --tree --level=1 --icons=always --sort=extension'
+alias ls='eza -l --sort=extension --icons=always --color=always'
+alias la='eza -la --sort=extension --icons=always --color=always'
 alias vim=nvim
 alias bt='bluetuith'
 alias blf='hyprshade toggle blue-light-filter'
