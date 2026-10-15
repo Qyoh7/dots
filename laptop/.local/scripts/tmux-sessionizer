@@ -3,8 +3,16 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /home ~/personal ~/personal/probe/ ~/personal/projects ~/personal/projects/vex ~/dots \
-        -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(
+        {
+            find \
+                ~/personal/projects \
+                ~/personal/projects/vex \
+                ~/personal/probe \
+                -mindepth 1 -maxdepth 1 -type d
+            printf '%s\n' ~/dots/
+        } | fzf
+    )
 fi
 
 if [[ -z $selected ]]; then

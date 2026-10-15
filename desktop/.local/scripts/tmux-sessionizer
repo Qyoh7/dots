@@ -3,7 +3,15 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/.steam/steam/steamapps/compatdata/2060160/pfx/drive_c/users/steamuser/AppData/LocalLow/TheFarmerWasReplaced/TheFarmerWasReplaced/Saves/ ~/personal ~/personal/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(
+    {
+        find \
+            ~/personal \
+            ~/personal/projects \
+            -mindepth 1 -maxdepth 1 -type d
+        printf '%s\n' ~/dots/
+    } | fzf
+)
 fi
 
 if [[ -z $selected ]]; then
