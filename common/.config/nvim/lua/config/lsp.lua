@@ -18,3 +18,11 @@ vim.lsp.config("zls", {
         },
     },
 })
+
+vim.lsp.config('ts_ls', {
+    init_options = {
+        preferences = {
+            includeCompletionsForModuleExports = false,
+        },
+    },
+})
