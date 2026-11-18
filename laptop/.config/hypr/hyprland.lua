@@ -169,7 +169,7 @@ hl.config({
         kb_options = "",
 
         follow_mouse = 1,
-        sensitivity = -0.3,
+        sensitivity = -0.7,
         accel_profile = "flat",
 
         touchpad = {
